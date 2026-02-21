@@ -1,13 +1,14 @@
 # SecureGuard - Antivirus Security Platform
 
-A full-stack antivirus and security monitoring platform built with React, Node.js, and real-time file monitoring.
+A full-stack antivirus and security monitoring platform built with React, Node.js, and real-time file monitoring. Now available as a Progressive Web App (PWA) for mobile and desktop!
 
 ![SecureGuard](https://img.shields.io/badge/status-active-success.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![PWA](https://img.shields.io/badge/PWA-enabled-blue.svg)
 
 ## Features
 
-- **File & Directory Scanning**: Scan individual files or entire directories for threats
+- **File Upload & Scanning**: Upload and scan files instantly
 - **Real-time File Monitoring**: Automatically monitor directories and scan files as they're created/modified
 - **Threat Database**: Manage threat signatures with severity levels (low, medium, high, critical)
 - **Quarantine System**: Automatically isolate infected files
@@ -15,6 +16,7 @@ A full-stack antivirus and security monitoring platform built with React, Node.j
 - **System Monitoring**: Track system health, memory usage, and resource utilization
 - **Scan History**: View all past scans and their results
 - **Modern UI**: Dark-themed, responsive interface
+- **📱 PWA Support**: Install on mobile/desktop, works offline, push notifications
 
 ## Tech Stack
 

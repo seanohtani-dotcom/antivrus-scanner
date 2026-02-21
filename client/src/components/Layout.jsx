@@ -6,15 +6,21 @@ function Layout({ children }) {
   const isActive = (path) => location.pathname === path;
   
   return (
-    <div style={{ display: 'flex', minHeight: '100vh' }}>
+    <div style={{ display: 'flex', minHeight: '100vh', flexDirection: window.innerWidth < 768 ? 'column' : 'row' }}>
       <nav style={{
-        width: '250px',
+        width: window.innerWidth < 768 ? '100%' : '250px',
         background: '#1a1a1a',
-        borderRight: '1px solid #2a2a2a',
+        borderRight: window.innerWidth < 768 ? 'none' : '1px solid #2a2a2a',
+        borderBottom: window.innerWidth < 768 ? '1px solid #2a2a2a' : 'none',
         padding: '20px'
       }}>
         <h1 style={{ marginBottom: '30px', fontSize: '20px' }}>🛡️ SecureGuard</h1>
-        <ul style={{ listStyle: 'none' }}>
+        <ul style={{ 
+          listStyle: 'none',
+          display: window.innerWidth < 768 ? 'flex' : 'block',
+          overflowX: window.innerWidth < 768 ? 'auto' : 'visible',
+          gap: window.innerWidth < 768 ? '10px' : '0'
+        }}>
           <NavItem to="/" active={isActive('/')}>Dashboard</NavItem>
           <NavItem to="/scanner" active={isActive('/scanner')}>Scanner</NavItem>
           <NavItem to="/monitor" active={isActive('/monitor')}>Monitor</NavItem>
@@ -22,7 +28,7 @@ function Layout({ children }) {
           <NavItem to="/quarantine" active={isActive('/quarantine')}>Quarantine</NavItem>
         </ul>
       </nav>
-      <main style={{ flex: 1 }}>
+      <main style={{ flex: 1, overflowX: 'hidden' }}>
         <div className="container">
           {children}
         </div>
