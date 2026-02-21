@@ -56,6 +56,10 @@ function Monitor() {
       }
     };
     
+    ws.onerror = () => {
+      console.log('WebSocket connection failed - real-time updates disabled');
+    };
+    
     return () => ws.close();
   }, []);
 
