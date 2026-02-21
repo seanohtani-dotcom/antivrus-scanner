@@ -4,6 +4,8 @@ import dotenv from 'dotenv';
 import { WebSocketServer } from 'ws';
 import { createServer } from 'http';
 import fileUpload from 'express-fileupload';
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
 import scanRoutes from './routes/scan.js';
 import threatRoutes from './routes/threats.js';
 import systemRoutes from './routes/system.js';
@@ -17,11 +19,37 @@ const app = express();
 const server = createServer(app);
 const wss = new WebSocketServer({ server });
 
-app.use(cors());
-app.use(express.json());
+// Security middleware
+app.use(helmet({
+  contentSecurityPolicy: false, // Allow for development
+  crossOriginEmbedderPolicy: false
+}));
+
+// Rate limiting
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Limit each IP to 100 requests per windowMs
+  message: 'Too many requests from this IP, please try again later.'
+});
+
+app.use('/api/', limiter);
+
+// CORS configuration
+const corsOptions = {
+  origin: process.env.ALLOWED_ORIGINS?.split(',') || ['http://localhost:3000'],
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
+app.use(express.json({ limit: '10mb' }));
 app.use(fileUpload({
   useTempFiles: true,
-  tempFileDir: './temp/'
+  tempFileDir: './temp/',
+  limits: { fileSize: 50 * 1024 * 1024 }, // 50MB max file size
+  abortOnLimit: true,
+  safeFileNames: true,
+  preserveExtension: true
 }));
 
 // Routes
