@@ -11,8 +11,8 @@ Get SecureGuard up and running in 3 minutes!
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/yourusername/secureguard.git
-cd secureguard
+git clone https://github.com/seanohtani-dotcom/antivrus-scanner.git
+cd antivrus-scanner
 
 # 2. Install dependencies
 npm install
@@ -21,9 +21,13 @@ npm install
 npm run dev
 ```
 
+**Important:** Keep the terminal running! The server must be active for the links to work.
+
 That's it! The application will start on:
 - Frontend: http://localhost:3000
 - Backend: http://localhost:5000
+
+**Note:** If you click the links above and get "can't reach this page", make sure you've run `npm run dev` first!
 
 ## First Steps
 
