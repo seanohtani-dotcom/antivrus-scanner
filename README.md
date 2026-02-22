@@ -188,16 +188,3 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Acknowledgments
-
-- Built with React and Node.js
-- File monitoring powered by Chokidar
-- UI inspired by modern security platforms
-
-## Support
-
-For support, email support@secureguard.com or open an issue on GitHub.
-
----
-
-Made with ❤️ by [Your Name]
